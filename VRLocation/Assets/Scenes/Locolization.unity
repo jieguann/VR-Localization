@@ -685,8 +685,8 @@ MonoBehaviour:
   moveSpeed: 20
   canSmoothRotate: 0
   rotateSpeed: 20
-  canTeleport: 0
+  canTeleport: 1
   teleportingHand: {fileID: 420644136}
   line: {fileID: 420644142}
-  curveHeight: {x: 0, y: 0, z: 0}
+  curveHeight: {x: 0, y: 0.5, z: 0}
   lineResolution: 10
