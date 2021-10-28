@@ -21,6 +21,9 @@ public class VRLocomotion : MonoBehaviour
     public bool canTeleport;
     public Transform teleportingHand;
     public LineRenderer line;
+    public Vector3 curveHeight;
+    public int lineResolution;
+
     private void Awake()
     {
         verticalAxis = "XRI_Left_Primary2DAxis_Vertical";
@@ -30,7 +33,7 @@ public class VRLocomotion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        line.positionCount = lineResolution;
     }
 
     // Update is called once per frame
@@ -52,7 +55,7 @@ public class VRLocomotion : MonoBehaviour
         Vector3 lookDirection = new Vector3(head.forward.x, 0, head.forward.z);
         lookDirection.Normalize();
 
-        XRRig.position += Time.deltaTime * lookDirection * axisValue * moveSpeed;
+        XRRig.position += Time.deltaTime * lookDirection * axisValue * moveSpeed * -1;
     }
 
     void SmoothRotate(float axisValue)
@@ -67,8 +70,26 @@ public class VRLocomotion : MonoBehaviour
         if(Physics.Raycast(ray, out RaycastHit hit))
         {
             line.enabled = true;
-            line.SetPosition(0,teleportingHand.position);
-            line.SetPosition(1, hit.point);
+
+            Vector3 startPoint = teleportingHand.position;
+            Vector3 endPoint = hit.point;
+            Vector3 midPoint = ((endPoint - startPoint)/2 ) + startPoint;
+            midPoint += curveHeight;
+
+            for(int i=0; i<lineResolution; i++)
+            {
+                float t = i / (float)lineResolution;
+                Vector3 startToMid = Vector3.Lerp(startPoint, midPoint, t);
+                Vector3 midToEnd = Vector3.Lerp(midPoint, endPoint, t);
+
+                Vector3 curvePosition = Vector3.Lerp(startToMid,midToEnd,t);
+
+                line.SetPosition(i, curvePosition);
+            }
+
+            //Straight Line!
+            //line.SetPosition(0,teleportingHand.position);
+            //line.SetPosition(1, hit.point);
         }
 
         if (Input.GetButtonDown(triggerButton))

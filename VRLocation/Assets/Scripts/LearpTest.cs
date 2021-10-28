@@ -38,6 +38,8 @@ public class LearpTest : MonoBehaviour
 
         pointP.position = Vector3.Lerp(PointA.position, PointB.position, lerpPosition);
         pointQ.position = Vector3.Lerp(PointB.position, PointC.position, lerpPosition);
+
+        PointX.position = Vector3.Lerp(pointP.position, pointQ.position, lerpPosition);
         
     }
 

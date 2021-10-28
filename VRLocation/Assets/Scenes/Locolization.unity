@@ -174,8 +174,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 0.06, y: 0, z: 0}
+  - {x: 0.33, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -681,10 +681,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   XRRig: {fileID: 2025532972}
   head: {fileID: 487355675}
-  canSmoothMove: 1
+  canSmoothMove: 0
   moveSpeed: 20
   canSmoothRotate: 0
   rotateSpeed: 20
   canTeleport: 0
   teleportingHand: {fileID: 420644136}
   line: {fileID: 420644142}
+  curveHeight: {x: 0, y: 0, z: 0}
+  lineResolution: 10
