@@ -688,5 +688,12 @@ MonoBehaviour:
   canTeleport: 1
   teleportingHand: {fileID: 420644136}
   line: {fileID: 420644142}
-  curveHeight: {x: 0, y: 0.5, z: 0}
+  curveHeight: {x: 0, y: 1, z: 0}
   lineResolution: 10
+  reticle: {fileID: 0}
+  fadeTime: 0
+  fader: {fileID: 0}
+  validStart: {r: 0, g: 0, b: 0, a: 0}
+  validEnd: {r: 0, g: 0, b: 0, a: 0}
+  invalidStart: {r: 0, g: 0, b: 0, a: 0}
+  invalidEnd: {r: 0, g: 0, b: 0, a: 0}
